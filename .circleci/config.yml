@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  test:
+    steps:
+      - checkout
+      - run: cd app && virtualenv -p python3 .venv
+      - run: pip install -r requirements.txt
+      - run: .venv/bin/python -m pytest tests/
+
+
+  release:
+    docker:
+      - image: duythinht/operator:1.7.1-69b25635
+        entrypoint: ["sh"]
+    steps:
+      - run:
+          name: release new version
+          command: |
+            /operator release github -o ${CIRCLE_PROJECT_USERNAME} -x ${CIRCLE_PROJECT_REPONAME} -a https://github.com -t ${RELEASE_TOKEN} -s
+
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - test
+      - release:
+          filters:
+            branches:
+              only: master
