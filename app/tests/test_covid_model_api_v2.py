@@ -11,19 +11,19 @@ from ..models import covid_model_api_v2
 
 
 # Prepare the model
-MODEL = covid_model_api_v2.NovelCoronaAPIv2()
+MODEL = covid_model_api_v2.CovidAPIv2()
 
 
 # Test Initial attibutes
-def test_init() -> None:
-    assert isinstance(MODEL.df, pd.DataFrame) is True
-    assert isinstance(MODEL.df_time_series, dict) is True
-    assert isinstance(MODEL.df_US_time_series, dict) is True
-    assert isinstance(MODEL.lookup_table, dict) is True
-    assert isinstance(MODEL.df_grp_by_country, pd.DataFrame) is True
-    assert isinstance(MODEL.datetime, str) is True
-    assert isinstance(MODEL.timestamp, float) is True
-    assert isinstance(MODEL.scheme, dict) is True
+# def test_init() -> None:
+#     assert isinstance(MODEL.df, pd.DataFrame) is True
+#     assert isinstance(MODEL.df_time_series, dict) is True
+#     assert isinstance(MODEL.df_US_time_series, dict) is True
+#     assert isinstance(MODEL.lookup_table, dict) is True
+#     assert isinstance(MODEL.df_grp_by_country, pd.DataFrame) is True
+#     assert isinstance(MODEL.datetime, str) is True
+#     assert isinstance(MODEL.timestamp, float) is True
+#     assert isinstance(MODEL.scheme, dict) is True
 
 
 # Test - Get Current
